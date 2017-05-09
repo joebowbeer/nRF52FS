@@ -28,7 +28,7 @@
 #define LED_ACTIVE LOW
 
 #else
-#error "Unsupported part:" __PART_NAME__ 
+#error "Unsupported platform." 
 #endif
 
 #define CHANNEL 10
