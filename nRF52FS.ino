@@ -1,16 +1,35 @@
-// BLE MIDI foot switch for SparkFun nRF52832 Breakout
+// BLE MIDI foot switch for Adafruit and SparkFun nRF52 boards:
+// 
+// Adafruit Bluefruit nRF52 Feather (FEATHER52)
+// SparkFun nRF52832 Breakout (NRF52_DK)
 
-#include <SPI.h> // required by BLEPeripheral
 #include <BLEPeripheral.h>
 
-// LED on pin 7 is active low
-#define LED_PIN 7
-#define LED_ACTIVE LOW
+#if defined(ARDUINO_FEATHER52)
+
+// TRS jack breakout connected to pins A5..A0
+#define TIP_PIN A5
+#define RNG_PIN A3
+#define SLV_PIN A1
+
+// Blue LED
+#define LED_PIN LED_BLUE
+#define LED_ACTIVE LED_STATE_ON
+
+#elif defined(ARDUINO_NRF52_DK)
 
 // TRS jack breakout connected to pins 15..10
 #define TIP_PIN 15
 #define RNG_PIN 13
 #define SLV_PIN 11
+
+// LED on pin 7 is active low
+#define LED_PIN 7
+#define LED_ACTIVE LOW
+
+#else
+#error "Unsupported part:" __PART_NAME__ 
+#endif
 
 #define CHANNEL 10
 
